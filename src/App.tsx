@@ -1,10 +1,13 @@
 import React from 'react';
+import GlobalStyle from './styles/globalStyle';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div>
-      Band List
-    </div>
+    <>
+      <GlobalStyle />
+      <Home />
+    </>
   );
 }
 
