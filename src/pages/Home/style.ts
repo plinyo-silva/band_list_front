@@ -35,6 +35,13 @@ export const ListItem = styled.div`
   button {
     color: red;
     background-color: #ffffff;
+    cursor: pointer;
   }
+
+`;
+
+export const ConteinerContent = styled.div`
+  display: flex;
+  flex-direction: row;
 
 `;
