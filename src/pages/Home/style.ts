@@ -28,5 +28,13 @@ export const ListItem = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid #ffffff20;
   
- 
+  span {
+    color: yellow;
+  }
+  
+  button {
+    color: red;
+    background-color: #ffffff;
+  }
+
 `;

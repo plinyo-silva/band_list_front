@@ -13,6 +13,10 @@ interface BandType {
 const Home: React.FC = () => {
     const [bands, setBands] = React.useState<BandType[]>([]);
 
+    const getBandDetails = async (id: string) => {
+        const response = await api(`/bands/details/${id}`);
+        return response.data;
+    }
 
     useEffect(() => {
         setBands(bandsList.bands);
@@ -28,7 +32,7 @@ const Home: React.FC = () => {
                 {bands.map((band: BandType) => (
                     <ListItem key={band.id}>
                         <span>{band.name}</span>
-
+                        <button onClick={e => { e.preventDefault(); getBandDetails(band.id) }} style={{ width: '80px', height: '30px' }}>Detalhes</button>
                     </ListItem>
                 ))}
             </ConteinerList>
