@@ -1,46 +1,161 @@
-# Getting Started with Create React App
+# Band List Front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React + TypeScript frontend for browsing a curated list of bands and viewing detailed information for each artist.
+
+## Overview
+
+This project provides a simple and clean interface for exploring bands. Users can:
+
+- View a list of available bands
+- Select a band to see its details
+- Read the band's biography
+- View genre information
+- Check the number of plays
+- See the band's image
+
+The application consumes a remote API to fetch band details dynamically while using a local dataset to render the initial band list.
+
+## Tech Stack
+
+- **React 18**
+- **TypeScript**
+- **Create React App**
+- **Styled Components**
+- **Axios**
+
+## Project Structure
+
+```text
+.
+├── public/
+├── src/
+│   ├── data/            # Local data source for the initial band list
+│   ├── pages/
+│   │   ├── Home/        # Main page with band list and selection flow
+│   │   └── Band/        # Band details view
+│   ├── services/        # API configuration and HTTP client
+│   ├── styles/          # Global styles
+│   └── types/           # TypeScript DTOs and shared types
+├── package.json
+└── README.md
+```
+
+## Features
+
+- Band listing interface
+- On-demand band details loading
+- Typed data models with TypeScript interfaces
+- Component-based structure for maintainability
+- Centralized API service configuration
+- Global styling with Styled Components
+
+## API Integration
+
+The frontend is configured to consume a backend API hosted on AWS API Gateway.
+
+### Base URL
+
+```text
+https://xqwsf2o3ei.execute-api.us-east-1.amazonaws.com/v1/api
+```
+
+### Example endpoint used by the app
+
+```text
+GET /bands/details/{id}
+```
+
+## Getting Started
+
+### Prerequisites
+
+Make sure you have installed:
+
+- **Node.js** 16 or later
+- **npm** or **yarn**
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/plinyo-silva/band_list_front.git
+cd band_list_front
+npm install
+```
+
+Or, if you prefer Yarn:
+
+```bash
+yarn install
+```
+
+## Running the Project
+
+Start the development server:
+
+```bash
+npm start
+```
+
+Then open your browser at:
+
+```text
+http://localhost:3000
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Runs the app in development mode.
 
 ### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in watch mode.
 
 ### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Builds the app for production into the `build/` directory.
 
 ### `npm run eject`
+Ejects the Create React App configuration. This action is irreversible.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Data Model
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `BandDTO`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```ts
+interface BandDTO {
+  id: string;
+  name: string;
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### `BandDetailsDTO`
 
-## Learn More
+```ts
+interface BandDetailsDTO {
+  albums: string[];
+  biography: string;
+  genre: string;
+  id: string;
+  image: string;
+  name: string;
+  numPlays: number;
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Future Improvements
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Add loading and error states for API requests
+- Improve accessibility and semantic HTML
+- Add unit and integration tests
+- Add search and filtering for bands
+- Add routing for standalone band detail pages
+- Move API base URL to environment variables
+
+## Author
+
+Developed by **plinyo-silva**.
+
+## License
+
+This project does not currently specify a license. Add a `LICENSE` file if you want to define usage permissions.
